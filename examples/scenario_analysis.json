@@ -1,0 +1,158 @@
+{
+  "synthetic": true,
+  "scenarios": [
+    {
+      "code": "tcp_ok_tls_failure",
+      "title": "TCP established but TLS did not complete normally",
+      "layer": "tcp_tls",
+      "evidence": {
+        "attempts": [
+          {
+            "host": "example.com",
+            "family": "IPv4",
+            "ip": "203.0.113.10",
+            "stage": "tls_timeout",
+            "dns_ms": 2,
+            "tcp_ms": 10,
+            "tls_ms": 6000,
+            "http_ms": null,
+            "intermittent": false,
+            "attempt": 1
+          },
+          {
+            "host": "example.com",
+            "family": "IPv4",
+            "ip": "203.0.113.10",
+            "stage": "tls_timeout",
+            "dns_ms": 2,
+            "tcp_ms": 10,
+            "tls_ms": 6000,
+            "http_ms": null,
+            "intermittent": false,
+            "attempt": 2
+          },
+          {
+            "host": "example.org",
+            "family": "IPv4",
+            "ip": "203.0.113.10",
+            "stage": "tls_timeout",
+            "dns_ms": 2,
+            "tcp_ms": 10,
+            "tls_ms": 6000,
+            "http_ms": null,
+            "intermittent": false,
+            "attempt": 1
+          },
+          {
+            "host": "example.org",
+            "family": "IPv4",
+            "ip": "203.0.113.10",
+            "stage": "tls_timeout",
+            "dns_ms": 2,
+            "tcp_ms": 10,
+            "tls_ms": 6000,
+            "http_ms": null,
+            "intermittent": false,
+            "attempt": 2
+          }
+        ],
+        "corroborating_orphan_candidates": [
+          {
+            "Name": "EndpointProtectionService",
+            "Status": "orphan_candidate",
+            "Running": true,
+            "Reasons": [
+              "Synthetic complete uninstall inventory does not list the expected application."
+            ]
+          },
+          {
+            "Name": "BdNet",
+            "Status": "registration_missing",
+            "Running": true,
+            "Reasons": [
+              "Synthetic runtime driver enumeration remains after its service registration is absent."
+            ]
+          },
+          {
+            "Name": "Synthetic Endpoint Security",
+            "Status": "orphan_security_provider",
+            "Reasons": [
+              "Synthetic provider is registered while its main product file is missing."
+            ]
+          }
+        ]
+      },
+      "reasoning": "Each recorded attempt completed TCP on the same socket before its TLS-stage failure. Relevant orphan evidence increases investigation priority when the differential repeats.",
+      "alternatives": [
+        "Path MTU or packet loss.",
+        "Server-side policy or failure.",
+        "TLS inspection or other intermediate equipment.",
+        "Certificate/time/trust-store failure when certificate validation is the measured error."
+      ],
+      "verification": [
+        "Repeat identical targets and parameters; preserve all IPs and attempt outcomes.",
+        "Inspect read-only WFP/NDIS ownership evidence and compare before/after snapshots.",
+        "Use a trusted vendor removal procedure only after verifying product identity and suitability."
+      ],
+      "conditions": [
+        "tcp_ms is present for each TLS-stage failure.",
+        "E3 requires repeated multi-target failures and independently enumerated relevant orphan candidates.",
+        "Correlation does not establish a kernel deadlock or identify a culpable driver."
+      ],
+      "risk": "manual_security_component_review",
+      "grade": "E3",
+      "grade_definition": "Corroborated: repeated differential measurements plus independent relevant configuration evidence; causality remains unproven.",
+      "priority": "high",
+      "repair": "No automatic system change is authorized by this hypothesis."
+    },
+    {
+      "code": "orphaned_service_or_driver",
+      "title": "Security or VPN component ownership needs review",
+      "layer": "security_driver",
+      "evidence": [
+        {
+          "Name": "EndpointProtectionService",
+          "Status": "orphan_candidate",
+          "Running": true,
+          "Reasons": [
+            "Synthetic complete uninstall inventory does not list the expected application."
+          ]
+        },
+        {
+          "Name": "BdNet",
+          "Status": "registration_missing",
+          "Running": true,
+          "Reasons": [
+            "Synthetic runtime driver enumeration remains after its service registration is absent."
+          ]
+        },
+        {
+          "Name": "Synthetic Endpoint Security",
+          "Status": "orphan_security_provider",
+          "Reasons": [
+            "Synthetic provider is registered while its main product file is missing."
+          ]
+        }
+      ],
+      "reasoning": "Independent inventory records show an ownership/registration inconsistency. Missing uninstall registration alone is not proof that the main program was removed.",
+      "alternatives": [
+        "Portable or enterprise-deployed software.",
+        "A shared SDK owned by a different installed product.",
+        "A component pending reboot or a stale security-center registration."
+      ],
+      "verification": [
+        "Verify publisher signature, product metadata, service path and the current antivirus provider.",
+        "Compare the component with the installed-app list and a known-good snapshot."
+      ],
+      "conditions": [
+        "The inventory completeness attached to the evidence supports the stated absence.",
+        "Names alone do not establish product ownership, malware or fault."
+      ],
+      "risk": "manual_security_component_review",
+      "grade": "E1",
+      "grade_definition": "Observed: a directly measured state or one failed attempt; cause is unconfirmed.",
+      "priority": "review",
+      "repair": "No automatic system change is authorized by this hypothesis."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "winnetdiff"
+version = "2.2.0a3"
+description = "Privacy-first Windows network differential diagnostics and repair toolkit"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [{name = "Alden"}]
+dependencies = []
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Win32 (MS Windows)",
+  "Intended Audience :: System Administrators",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: Microsoft :: Windows :: Windows 11",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Topic :: System :: Networking :: Monitoring",
+]
+
+[project.scripts]
+winnetdiff = "winnetdiff.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["winnetdiff*"]

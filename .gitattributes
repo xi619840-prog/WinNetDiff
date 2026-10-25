@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.ico binary
+tests/fixtures/native_cp936.csv binary

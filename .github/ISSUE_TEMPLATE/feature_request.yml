@@ -1,0 +1,18 @@
+name: Feature request
+description: Suggest a testable diagnostic capability or usability improvement.
+title: '[Feature] '
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: What evidence would support the proposed diagnosis?
+  - type: textarea
+    id: safety
+    attributes:
+      label: Privacy, false positives, and rollback considerations

@@ -1,0 +1,175 @@
+{
+  "format": "winnetdiff.snapshot",
+  "schema_version": 1,
+  "application_version": "2.1.0b1",
+  "locale": "en",
+  "created_at": "2026-10-24T17:15:41+08:00",
+  "observed_at": "2026-01-01T00:00:00+00:00",
+  "label": "Synthetic healthy baseline",
+  "privacy": "redacted",
+  "categories": {
+    "adapters": [
+      {
+        "id": "d9ac74e4237ea6e952092f7b",
+        "value": {
+          "Name": "WLAN",
+          "Status": "Up",
+          "ifIndex": 3,
+          "InterfaceGuid": "<identifier-bd481889249a>",
+          "Classification": "physical"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "id": "aa2efd3e271336fa2d0f14c0",
+        "value": {
+          "InterfaceIndex": 3,
+          "AddressFamily": 2,
+          "DestinationPrefix": "<ip-19e36255>/0",
+          "NextHop": "<ip-37fcff24>",
+          "RouteMetric": 10,
+          "InterfaceMetric": 25,
+          "EffectiveMetric": 35
+        }
+      }
+    ],
+    "default_routes": [
+      {
+        "id": "a944767f3896753d08b8dd75",
+        "value": {
+          "InterfaceAlias": "WLAN",
+          "InterfaceIndex": 3,
+          "AddressFamily": 2,
+          "DestinationPrefix": "<ip-19e36255>/0",
+          "NextHop": "<ip-37fcff24>",
+          "EffectiveMetric": 35
+        }
+      }
+    ],
+    "dns": [
+      {
+        "id": "38d01dde669be16aab182755",
+        "value": {
+          "InterfaceIndex": 3,
+          "InterfaceAlias": "WLAN",
+          "AddressFamily": 2,
+          "ServerAddresses": [
+            "<ip-a26f4ae3>"
+          ]
+        }
+      }
+    ],
+    "proxy": [
+      {
+        "id": "035ae5b1fd3bb922cab56e24",
+        "value": {
+          "scope": "wininet_machine",
+          "settings": {}
+        }
+      },
+      {
+        "id": "0e769581ed0635a1bb74733e",
+        "value": {
+          "scope": "winhttp",
+          "settings": {}
+        }
+      },
+      {
+        "id": "3060817fa5c5538bf2579205",
+        "value": {
+          "scope": "policy",
+          "settings": {}
+        }
+      },
+      {
+        "id": "610523aa3f443ffa9fa56ed4",
+        "value": {
+          "scope": "wininet_user",
+          "settings": {}
+        }
+      },
+      {
+        "id": "b50c2b203368cceec4389ac3",
+        "value": {
+          "scope": "wininet",
+          "settings": {
+            "ProxyEnable": 0,
+            "ProxyServer": ""
+          }
+        }
+      },
+      {
+        "id": "bd5af7861182f6ea2f625036",
+        "value": {
+          "scope": "policy_user",
+          "settings": {}
+        }
+      },
+      {
+        "id": "fc37112be73420ab0df80307",
+        "value": {
+          "scope": "effective_scope",
+          "settings": {}
+        }
+      }
+    ],
+    "environment": [
+      {
+        "id": "75976aeb94bd2cab5459fa13",
+        "value": {
+          "scope": "user",
+          "settings": {}
+        }
+      },
+      {
+        "id": "9a228ee4ef8a28d24fd81a84",
+        "value": {
+          "scope": "machine",
+          "settings": {}
+        }
+      },
+      {
+        "id": "fb28a8895ac883af7c27f0d6",
+        "value": {
+          "scope": "process",
+          "settings": {}
+        }
+      }
+    ],
+    "services": [],
+    "drivers": [],
+    "bindings": [
+      {
+        "id": "1842227ada71b3c54899acef",
+        "value": {
+          "Name": "WLAN",
+          "ComponentID": "synthetic_filter",
+          "Enabled": true,
+          "Classification": "unknown-third-party"
+        }
+      }
+    ],
+    "security_providers": [],
+    "installed_apps": []
+  },
+  "completeness": {
+    "adapters": true,
+    "routes": true,
+    "default_routes": true,
+    "bindings": true,
+    "dns": true,
+    "proxy": true,
+    "environment": true,
+    "services": true,
+    "drivers": true,
+    "security_providers": true,
+    "installed_apps": true
+  },
+  "collection_errors": {
+    "proxy": [],
+    "route": [],
+    "security": []
+  },
+  "cancelled": false
+}

@@ -1,0 +1,8 @@
+{
+  "version": "2.2.0a3",
+  "formal_release_ready": false,
+  "reviewed_standalone_sha256": null,
+  "windows_controlled_proxy_write_restore": "not_executed",
+  "clean_windows11_vm_exe_smoke": "not_executed",
+  "reason": "Actual WinINET write/restore requires a separately authorized recoverable test environment. Mock tests and read-only local validation do not satisfy that gate."
+}

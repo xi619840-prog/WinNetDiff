@@ -1,0 +1,91 @@
+{
+  "format": "winnetdiff.snapshot-diff",
+  "schema_version": 1,
+  "before_label": "Synthetic healthy baseline",
+  "after_label": "Synthetic fault state",
+  "before_observed_at": "2026-01-01T00:00:00+00:00",
+  "after_observed_at": "2026-01-01T00:00:00+00:00",
+  "privacy": "redacted",
+  "changes": [
+    {
+      "kind": "added",
+      "category": "services",
+      "id": "a38902cc1ae2764df893d446",
+      "before": null,
+      "after": {
+        "Name": "EndpointProtectionService",
+        "sources": {
+          "registry": {
+            "Name": "EndpointProtectionService",
+            "PathName": "<local-path>/endpoint.exe",
+            "RegistryStart": 2,
+            "RegistryType": 16
+          },
+          "wmi": {
+            "Name": "EndpointProtectionService",
+            "DisplayName": "Synthetic Endpoint SDK",
+            "State": "Running",
+            "StartMode": "Auto",
+            "PathName": "<local-path>/endpoint.exe"
+          }
+        }
+      },
+      "changed_fields": []
+    },
+    {
+      "kind": "added",
+      "category": "drivers",
+      "id": "339b48443e923923d87c8106",
+      "before": null,
+      "after": {
+        "Name": "BdNet",
+        "sources": {
+          "wmi": {
+            "Name": "BdNet",
+            "State": "Running",
+            "PathName": "<local-path>/BdNet.sys"
+          }
+        }
+      },
+      "changed_fields": []
+    },
+    {
+      "kind": "added",
+      "category": "drivers",
+      "id": "3c030bac8cc71a201510cbcf",
+      "before": null,
+      "after": {
+        "Name": "BdSentry",
+        "sources": {
+          "wmi": {
+            "Name": "BdSentry",
+            "State": "Running",
+            "PathName": "<local-path>/BdSentry.sys"
+          }
+        }
+      },
+      "changed_fields": []
+    },
+    {
+      "kind": "added",
+      "category": "security_providers",
+      "id": "755976f978f29254ef4cf743",
+      "before": null,
+      "after": {
+        "displayName": "Synthetic Endpoint Security",
+        "pathToSignedProductExe": "<local-path>/missing.exe",
+        "productState": 0
+      },
+      "changed_fields": []
+    }
+  ],
+  "unavailable_categories": [],
+  "counts": {
+    "added": 4,
+    "removed": 0,
+    "enabled": 0,
+    "disabled": 0,
+    "changed": 0
+  },
+  "interpretation": "Changes are observations, not proof of causality. Incomplete inventories are not compared."
+}

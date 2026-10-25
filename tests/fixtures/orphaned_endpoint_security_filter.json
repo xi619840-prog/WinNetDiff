@@ -1,0 +1,256 @@
+{
+  "version": "2.1.0b1",
+  "locale": "en",
+  "generated_at": "2026-01-01T00:00:00+00:00",
+  "hosts": [
+    "example.com",
+    "example.org"
+  ],
+  "cancelled": false,
+  "scan_options": {
+    "do_network": true,
+    "retries": 2,
+    "profile": "global"
+  },
+  "proxy": {
+    "wininet": {
+      "ProxyEnable": 0,
+      "ProxyServer": ""
+    },
+    "errors": [],
+    "environ_user": {},
+    "environ_machine": {},
+    "environ_process": {},
+    "local_listeners": []
+  },
+  "route": {
+    "adapters": [
+      {
+        "Name": "WLAN",
+        "ifIndex": 3,
+        "InterfaceGuid": "synthetic-guid",
+        "Status": "Up",
+        "Classification": "physical"
+      }
+    ],
+    "routes": [
+      {
+        "InterfaceIndex": 3,
+        "AddressFamily": 2,
+        "DestinationPrefix": "0.0.0.0/0",
+        "NextHop": "192.0.2.1",
+        "RouteMetric": 10,
+        "InterfaceMetric": 25,
+        "EffectiveMetric": 35
+      }
+    ],
+    "defaults_ipv4": [
+      {
+        "InterfaceIndex": 3,
+        "AddressFamily": 2,
+        "DestinationPrefix": "0.0.0.0/0",
+        "NextHop": "192.0.2.1",
+        "InterfaceAlias": "WLAN",
+        "EffectiveMetric": 35
+      }
+    ],
+    "defaults_ipv6": [],
+    "ipv6_bindings": [
+      {
+        "Name": "WLAN",
+        "ComponentID": "ms_tcpip6",
+        "Enabled": false
+      }
+    ],
+    "dns_servers": [
+      {
+        "InterfaceIndex": 3,
+        "InterfaceAlias": "WLAN",
+        "AddressFamily": 2,
+        "ServerAddresses": [
+          "192.0.2.53"
+        ]
+      }
+    ],
+    "bindings": [
+      {
+        "Name": "WLAN",
+        "ComponentID": "synthetic_filter",
+        "Enabled": true,
+        "Classification": "unknown-third-party",
+        "OwnerEvidence": {
+          "Service": "BdNet",
+          "Provenance": "Synthetic exact Ndi.Service metadata; not inferred from name."
+        }
+      }
+    ],
+    "query_status": {
+      "adapters": "ok",
+      "interfaces": "ok",
+      "routes": "ok",
+      "bindings": "ok",
+      "dns_servers": "ok"
+    },
+    "errors": []
+  },
+  "security": {
+    "service_registry": [
+      {
+        "Name": "EndpointProtectionService",
+        "PathName": "C:\\Program Files\\SyntheticEndpoint\\endpoint.exe",
+        "RegistryStart": 2,
+        "RegistryType": 16
+      }
+    ],
+    "services_wmi": [
+      {
+        "Name": "EndpointProtectionService",
+        "DisplayName": "Synthetic Endpoint SDK",
+        "State": "Running",
+        "PathName": "C:\\Program Files\\SyntheticEndpoint\\endpoint.exe",
+        "StartMode": "Auto"
+      }
+    ],
+    "drivers_wmi": [
+      {
+        "Name": "BdNet",
+        "State": "Running",
+        "PathName": "C:\\Windows\\System32\\drivers\\BdNet.sys"
+      },
+      {
+        "Name": "BdSentry",
+        "State": "Running",
+        "PathName": "C:\\Windows\\System32\\drivers\\BdSentry.sys"
+      }
+    ],
+    "driverquery": [],
+    "installed_apps": [],
+    "antivirus_products": [
+      {
+        "displayName": "Synthetic Endpoint Security",
+        "pathToSignedProductExe": "C:\\Program Files\\SyntheticEndpoint\\missing.exe",
+        "productState": 0
+      }
+    ],
+    "evidence": [
+      {
+        "Name": "EndpointProtectionService",
+        "Status": "orphan_candidate",
+        "Running": true,
+        "Reasons": [
+          "Synthetic complete uninstall inventory does not list the expected application."
+        ]
+      },
+      {
+        "Name": "BdNet",
+        "Status": "registration_missing",
+        "Running": true,
+        "Reasons": [
+          "Synthetic runtime driver enumeration remains after its service registration is absent."
+        ]
+      },
+      {
+        "Name": "Synthetic Endpoint Security",
+        "Status": "orphan_security_provider",
+        "Reasons": [
+          "Synthetic provider is registered while its main product file is missing."
+        ]
+      }
+    ],
+    "errors": [],
+    "completeness": {
+      "service_registry": true,
+      "services_wmi": true,
+      "drivers_wmi": true,
+      "driverquery": true,
+      "installed_apps": true,
+      "antivirus_products": true
+    }
+  },
+  "probes": [
+    {
+      "host": "example.com",
+      "context": {"port": 443, "sni": "example.com", "method": "HEAD", "path": "/", "connect_timeout": 5, "tls_timeout": 6, "http_timeout": 5},
+      "family": "IPv4",
+      "ip": "203.0.113.10",
+      "stage": "tls_timeout",
+      "dns_ms": 2,
+      "tcp_ms": 10,
+      "tls_ms": 6000,
+      "http_ms": null,
+      "intermittent": false,
+      "attempts": [
+        {
+          "host": "example.com",
+          "family": "IPv4",
+          "ip": "203.0.113.10",
+          "stage": "tls_timeout",
+          "dns_ms": 2,
+          "tcp_ms": 10,
+          "tls_ms": 6000,
+          "http_ms": null,
+          "intermittent": false,
+          "attempt": 1
+        },
+        {
+          "host": "example.com",
+          "family": "IPv4",
+          "ip": "203.0.113.10",
+          "stage": "tls_timeout",
+          "dns_ms": 2,
+          "tcp_ms": 10,
+          "tls_ms": 6000,
+          "http_ms": null,
+          "intermittent": false,
+          "attempt": 2
+        }
+      ]
+    },
+    {
+      "host": "example.org",
+      "context": {"port": 443, "sni": "example.org", "method": "HEAD", "path": "/", "connect_timeout": 5, "tls_timeout": 6, "http_timeout": 5},
+      "family": "IPv4",
+      "ip": "203.0.113.10",
+      "stage": "tls_timeout",
+      "dns_ms": 2,
+      "tcp_ms": 10,
+      "tls_ms": 6000,
+      "http_ms": null,
+      "intermittent": false,
+      "attempts": [
+        {
+          "host": "example.org",
+          "family": "IPv4",
+          "ip": "203.0.113.10",
+          "stage": "tls_timeout",
+          "dns_ms": 2,
+          "tcp_ms": 10,
+          "tls_ms": 6000,
+          "http_ms": null,
+          "intermittent": false,
+          "attempt": 1
+        },
+        {
+          "host": "example.org",
+          "family": "IPv4",
+          "ip": "203.0.113.10",
+          "stage": "tls_timeout",
+          "dns_ms": 2,
+          "tcp_ms": 10,
+          "tls_ms": 6000,
+          "http_ms": null,
+          "intermittent": false,
+          "attempt": 2
+        }
+      ]
+    }
+  ],
+  "findings": [],
+  "limitations": [],
+  "case_name": "orphaned_endpoint_security_filter",
+  "synthetic": true,
+  "observed_scope": "All data is invented test evidence; no live device or personal report.",
+  "synthetic_extra_observations": {
+    "icmp": "success in the invented scenario; WinNetDiff does not currently run an ICMP probe"
+  }
+}

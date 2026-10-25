@@ -1,0 +1,9 @@
+# Build-only. The application has no third-party Python runtime dependencies.
+# Verified against PyPI and the official PyInstaller documentation on 2026-10-24.
+pyinstaller==6.22.3
+pyinstaller-hooks-contrib==2026.9
+setuptools==84.2.1
+altgraph==0.17.5
+packaging==26.3
+pefile==2024.8.26
+pywin32-ctypes==0.2.3

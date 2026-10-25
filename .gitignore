@@ -1,0 +1,40 @@
+# Local evidence never belongs in a public source tree.
+/.local_validation/
+/validation/
+/results/
+/repairs/
+/snapshots/
+/private/
+*.log
+*.etl
+*.dmp
+wfp*.xml
+*_report.json
+*_snapshot.json
+
+# Local build environments and generated binaries.
+.build-venv/
+.venv/
+venv/
+.build/
+build/
+dist/
+*.exe
+*.dll
+*.pyd
+*.spec
+*.egg-info/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+
+# Controlled release staging is never part of the source archive.
+/release/

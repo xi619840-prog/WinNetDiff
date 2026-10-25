@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  windows-tests:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.10', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7, verified 2026-10-24
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Syntax, publication preflight, and generated-source consistency
+        shell: pwsh
+        run: |
+          python -m compileall -q winnetdiff tests scripts windows_net_diffdiag.py
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python scripts/publication_audit.py
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python scripts/build_standalone.py --check
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+      - name: Unit and mocked integration tests (no repair or remote probes)
+        shell: pwsh
+        run: |
+          python -m unittest discover -s tests -v
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python windows_net_diffdiag.py --self-test
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+      - name: Independent immutable 14-test acceptance
+        shell: pwsh
+        env:
+          WINNETDIFF_SOURCE: ${{ github.workspace }}/windows_net_diffdiag.py
+        run: |
+          python tests/regression/test_winnetdiff_redteam_v2.py
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+      - name: CLI language parsing
+        shell: pwsh
+        run: |
+          foreach ($language in @('en','zh-CN','zh-TW')) {
+            python windows_net_diffdiag.py --lang $language --help
+            if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          }
+
+      - name: Read-only Windows offline entry-point parity
+        if: matrix.python == '3.12'
+        shell: pwsh
+        run: |
+          python scripts/validate_entrypoints.py --output .local_validation/ci-entrypoints
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
